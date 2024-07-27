@@ -10,7 +10,7 @@ function Chatuser() {
         </div>
 
         <div>
-            <h1 className='text-xl'>Thomas</h1>
+            <h1 className='text-xl'>Thomas lol</h1>
             <span className='text-sm text-slate-400'>Offline</span>
         </div>
     </div>
