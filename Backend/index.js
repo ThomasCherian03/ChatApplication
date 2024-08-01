@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import userRoute from './routes/user.route.js';
 
 
@@ -10,6 +11,7 @@ dotenv.config();
 
 // MIDDLEWARE (we are doing this so that we can do req.body)
 app.use(express.json());
+app.use(cors());
 
 const PORT = process.env.PORT || 3001;
 
