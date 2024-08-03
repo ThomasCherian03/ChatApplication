@@ -19,7 +19,7 @@ function Login() {
             password: data.password,
         }
         // console.log(userInfo);
-        axios.post("http://localhost:4002/user/login",userInfo)
+        axios.post("/api/user/login",userInfo)
         .then((response)=>{
             console.log(response.data);
             if(response.data)

@@ -2,10 +2,10 @@
 
 import React from 'react'
 
-export default function User() {
+export default function User({user}) {
   return (
     <div>
-        <div className='flex space-x-4 px-8 py-3 hover:bg-slate-700 duration-300 cursor-pointer'>
+        <div className='flex px-8 py-3 space-x-4 duration-300 cursor-pointer hover:bg-slate-700'>
             <div className="avatar online">
             <div className="w-12 rounded-full">
                 <img src="https://media.licdn.com/dms/image/D5612AQFlR6CXtEk3og/article-inline_image-shrink_1000_1488/0/1709355454835?e=1725494400&v=beta&t=j41TQYSrOVhQHkBAUjU1Z-KztfNa3469LMY9QgrOppY" />
@@ -13,8 +13,8 @@ export default function User() {
             </div>
 
             <div>
-                <h1 className='font-semibold text-md'>Thomas</h1>
-                <span className='text-gray-500'>thomas.cherian1523@gmail.com</span>
+                <h1 className='font-semibold text-md'>{user.fullname}</h1>
+                <span className='text-gray-500'>{user.email}</span>
             </div>
         </div>
     </div>

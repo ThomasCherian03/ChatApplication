@@ -6,7 +6,7 @@ export default function Message() {
 
         <div className='p-4'>
             <div className="chat chat-end">
-                <div   div className="chat-bubble chat-bubble-info">Calm down, Anakin.</div>
+                <div className="chat-bubble chat-bubble-info">Calm down, Anakin.</div>
             </div>
 
             <div className="chat chat-start">
