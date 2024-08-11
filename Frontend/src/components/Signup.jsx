@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import axios from "axios";
 import { useAuth } from '../context/Authprovider';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function Signup() {
     const [authUser, setAuthUser] = useAuth()
@@ -35,14 +36,16 @@ function Signup() {
             console.log(response.data);
             if(response.data)
             {
-                alert("Signup Successful");
+                toast.success("Signup Successful");
             }
             localStorage.setItem("ChatApp",JSON.stringify(response.data));
+            console.log("Stored in localStorage:", localStorage.getItem("ChatApp"));
             setAuthUser(response.data);
+            console.log("AuthUser set to:", response.data);
         })
         .catch((error)=>{
             if (error.response && error.response.data && error.response.data.message) {
-                alert('Error: ' + error.response.data.message); // Use 'message' instead of 'error'
+                toast.error('Error: ' + error.response.data.message); // Use 'message' instead of 'error'
             }
         });
       } 

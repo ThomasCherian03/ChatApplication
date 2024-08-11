@@ -1,17 +1,36 @@
-import React from 'react'
+import React, { useState } from "react";
 import { IoSend } from "react-icons/io5";
+import useSendMessage from "../../context/useSendMessage.js";
 
-export default function Typesend() {
+function Typesend() {
+  const [message, setMessage] = useState("");
+  const { loading, sendMessages } = useSendMessage();
+
+  const handleSubmit = async (e) => {
+    console.log(e.target.value);
+    e.preventDefault();
+    await sendMessages(message);
+    setMessage("");
+  };
+
   return (
-    <div className='flex space-x-2 h-[8vh]  bg-gray-800'>
-
-        <div className='w-[70%] mx-4'>
-            <input type="text" placeholder="Type here" className="w-full px-4 py-3 mt-1 mb-1 border border-gray-700 outline-none rounded-xl" />
+    <form onSubmit={handleSubmit}>
+      <div className="flex space-x-1 h-[8vh]  bg-gray-800">
+        <div className=" w-[70%] mx-4">
+          <input
+            type="text"
+            placeholder="Type here"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            className="w-full px-4 py-3 mt-1 border border-gray-700 outline-none rounded-xl"
+          />
         </div>
-
         <button>
-            <IoSend className='text-3xl' />
+          <IoSend className="text-3xl" />
         </button>
-    </div>
-  )
+      </div>
+    </form>
+  );
 }
+
+export default Typesend;
