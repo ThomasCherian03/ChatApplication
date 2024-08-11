@@ -17,7 +17,7 @@ export const SocketProvider = ({children}) =>{ // we are passing children so tha
         // console.log("Auth User ID:", authUser ? authUser.user._id: "Auth User is undefined");
 
         if(authUser){
-            const socket = io.connect("http://localhost:4002",
+            const socket = io.connect("https://chatapplication-9kxk.onrender.com",
             {
                 query:
                 {
