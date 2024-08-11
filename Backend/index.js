@@ -6,7 +6,7 @@ import userRoute from './routes/user.route.js';
 import messageRoute from './routes/message.route.js';
 import cookieParser from 'cookie-parser';
 import { app, server } from './SocketIO/server.js';
-
+import path from 'path';
 
 
 dotenv.config();
@@ -15,6 +15,8 @@ dotenv.config();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
+
+
 
 const PORT = process.env.PORT || 3001;
 
@@ -30,6 +32,16 @@ try {
 
 app.use("/api/user",userRoute);
 app.use("/api/message",messageRoute);
+
+
+// code for deployment
+if(process.env.NODE_ENV === "production"){
+  const dirPath = path.resolve();
+  app.use(express.static("./Frontend/dist"));
+  app.get("*",(req,res) => {
+    req.sendFile(path.resolve(dirPath, "./Frontend/dist" , "index.html"))
+  })
+}
 
 server.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
